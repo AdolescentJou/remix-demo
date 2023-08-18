@@ -1,6 +1,12 @@
 import type { ActionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData, useNavigation } from "@remix-run/react";
+import {
+  Form,
+  useActionData,
+  useNavigation,
+  // useSubmit,
+  // useFetcher,
+} from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { createPost } from "~/models/post.server";
 
@@ -35,6 +41,9 @@ const inputClassName =
 export default function NewPost() {
   const errors = useActionData<typeof action>();
   const navigation = useNavigation();
+  // const submit = useSubmit();
+  // 使用fetchek可以主动从函数中发出请求
+  // const fetcher = useFetcher();
   const isCreating = Boolean(navigation.state === "submitting");
   // 表单数据回调
   console.log(
